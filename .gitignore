@@ -1,0 +1,8 @@
+images.zip
+.idea
+__pycache__
+old
+venv
+dist
+*.db
+*.exe
