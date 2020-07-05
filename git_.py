@@ -51,4 +51,3 @@ class GitCommandLines():
 
 if __name__ == "__main__":
     GitCommandLines().push_rep()
-    # old_ver_directory()
