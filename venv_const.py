@@ -1,6 +1,6 @@
 from compiler import subprocess_cmd
 
-dir_venv_32 = r'D:\devs\autom\venv\Scripts'
+dir_venv_32 = r'venv\Scripts'
 
 def install(lib):
     return f'pip --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --trusted-host pypi.org install {lib}'

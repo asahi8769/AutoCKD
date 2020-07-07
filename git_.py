@@ -26,7 +26,7 @@ def old_ver_directory():
 
 class GitCommandLines():
     def __init__(self):
-        self.repository = r'https://github.com/asahi8769/ckd_automation.git'
+        self.repository = r'https://github.com/asahi8769/AutoCKD.git'
         subprocess_cmd (f'git config --global user.name Ilhee Lee')
         subprocess_cmd(f'git config --global user.email asahi8769@gmail.com')
 
