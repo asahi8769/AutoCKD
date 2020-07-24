@@ -30,7 +30,7 @@ class KeyValue:
     combo_box_AD = {'고객사': 'ComboBox2'}
     edits_AD = {'업체통보대상년월' : 'Edit3', '사정년월' : 'Edit5', '환율기준일' : 'Edit4', '사정년월_headinfo' :'Edit2'}
     customer_AD = {'HMMA': 0, 'HMMR': 1, 'KMS':2, 'HMI': 3, 'HTBC': 4, 'YOUNGSAN': 5, 'HAOS': 6, 'KMC': 7, 'KMM': 8, 'KMI': 9,
-                   'HMMC': 10, 'KMMG': 11, 'HMB': 12}
+                   'HMMC': 10, 'KMMG': 11, 'HMB': 12, 'DWI': 13}
     image_AD = {'Search' : 'Image3' , 'Run' : 'Image4'}
     edits_OL = {'거래명세서년월': 'Edit3'}
     combo_box_OL = {'전송여부': 'ComboBox1', '상태': 'ComboBox2', '사업장': 'ComboBox3', 'CKD고객사코드': 'ComboBox4',
