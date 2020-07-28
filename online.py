@@ -18,8 +18,8 @@ class OnlineReceipt(AutoCKDInit):
 
     def uploade_file(self):
         while True:
-            file_name = pyautogui.prompt(text='업로드하려는 파일명을 입력하세요. \n파일을 바탕화면 또는 D 드라이브에 위치시켜주세요.', title='파일 업로드')
-            self.full_path = path_find(file_name, r'C:\\Users\glovis-laptop\Desktop', r'D:\\')
+            file_name = pyautogui.prompt(text='업로드하려는 파일명을 입력하세요. \n파일을 바탕화면 또는 현재 폴더에 위치시켜주세요.', title='파일 업로드')
+            self.full_path = path_find(file_name, r'C:\Users\glovis-laptop\Desktop', os.path.join(os.getcwd(), 'online'))
             if os.path.exists(self.full_path):
                 print(f'업로드할 파일을 찾았습니다. {self.full_path}')
                 break
