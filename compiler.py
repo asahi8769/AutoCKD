@@ -41,5 +41,5 @@ if __name__ == "__main__":
     dir_loc = os.path.join(os.getcwd(), 'dist')
 
     subprocess_cmd(f' cd {dir_venv_32} & {install_command} & cd dist & copy ckd_main.exe {dir_loc}')
-    packaging(r'ckd_main.exe', r'images', r'data')
+    packaging(r'ckd_main.exe', r'images', r'data', r'online')
     os.startfile('dist')
