@@ -27,9 +27,9 @@ class AutoCKDInit:
         while n < trial:
             try:
                 if re:
-                    self.app.connect(title_re=f'^({self.current_title})', visible_only=True)
+                    self.app.connect(title_re=f'^({self.current_title})', visible_only=True, found_index=0)
                 else:
-                    self.app.connect(title=self.current_title, visible_only=True)
+                    self.app.connect(title=self.current_title, visible_only=True, found_index=0)
                 time.sleep(wait)
                 print(f'다음 UI를 찾았습니다. {self.current_title}')
                 return True
@@ -106,15 +106,16 @@ class AutoCKDInit:
         if screen_no is None:
             return
         self.screen_no = screen_no
-        self.current_title = r"KD SYSTEM"
+        self.current_title = r"KD SYSTEM - \[Main\]"
         self.app_connect(re=True)
-        self.window = self.app.window(title_re=f'^({self.current_title})')
+        self.window = self.app.window(title_re=f'^({self.current_title})', found_index=0)
         self.wait_until_ready(self.window.Edit)
         self.window.Edit.click()
         pyautogui.press('f2')
         self.window.Edit.click()
         pyautogui.write(self.screen_no)
         pyautogui.press('enter')
+        self.current_title = r"KD SYSTEM"
 
     @staticmethod
     def screen_selection():
