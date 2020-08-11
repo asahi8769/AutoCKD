@@ -18,18 +18,15 @@ class Audition(AutoCKDInit):
         nextmonth = datetime.today() + relativedelta.relativedelta(months=1)
         while True:
             try :
-                ans = input(f"사정년월 (1: {today.strftime('%Y%m')}, 2: {nextmonth.strftime('%Y%m')}) :")
-                if int(ans) == 1:
+                ans = input(f"사정년월 (1: {today.strftime('%Y%m')}, 2: {nextmonth.strftime('%Y%m')}) (디폴트 : 1) :")
+                if int(ans) != 2:
                     self.issue_number = today.strftime('%Y%m')
                     self.first_working_day = DateConfig().getFirstWorkingDayOfMonth(dt=today).strftime('%Y%m%d')
                     break
-                if int(ans) == 2:
+                elif int(ans) == 2:
                     self.issue_number = nextmonth.strftime('%Y%m')
                     self.first_working_day = DateConfig().getFirstWorkingDayOfMonth(dt=nextmonth).strftime('%Y%m%d')
                     break
-                else:
-                    print('잘못된 값입니다.')
-                    continue
             except Exception as e:
                 print(f'잘못된 값입니다 ({e})')
                 continue
