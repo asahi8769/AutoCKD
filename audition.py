@@ -19,7 +19,7 @@ class Audition(AutoCKDInit):
         while True:
             try :
                 ans = input(f"사정년월 (1: {today.strftime('%Y%m')}, 2: {nextmonth.strftime('%Y%m')}) (디폴트 : 1) :")
-                if int(ans) != 2:
+                if ans == '' or int(ans) != 2 :
                     self.issue_number = today.strftime('%Y%m')
                     self.first_working_day = DateConfig().getFirstWorkingDayOfMonth(dt=today).strftime('%Y%m%d')
                     break

@@ -93,6 +93,8 @@ class OnlineReceipt(AutoCKDInit):
         self.launch()
         self.log_in()
         self.screen_transition('UI-MM-464')
+        self.app_connect(re=True)
+        self.window = self.app.window(title_re=f'^({self.current_title})', found_index=0)
         self.month_setting()
         self.task_setting()
         self.type_search()
