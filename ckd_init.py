@@ -1,8 +1,8 @@
 from pywinauto.application import Application
 from pywinauto.findwindows import find_windows
 import pyautogui
-import sys, os, time
-from config import path_find, KeyValue
+import time
+from config import *
 
 
 class AutoCKDInit:
@@ -120,7 +120,7 @@ class AutoCKDInit:
     @staticmethod
     def screen_selection():
         while True:
-            ans = input('화면 선택 (0: 로그인, 1: 사정결과조회, 2: 보상금액조정, 3: 클레임통보, 4: 분담조건등록, 5: 귀책조건등록, 6: 업체이의처리, 7:고객사이의처리, 8:고객차종별부품등록) :')
+            ans = input(f'화면 선택 {KeyValue.screen_nm} :')
             if ans == '0':
                 return None
             try :

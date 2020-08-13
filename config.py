@@ -36,7 +36,10 @@ class KeyValue:
     combo_box_OL = {'전송여부': 'ComboBox1', '상태': 'ComboBox2', '사업장': 'ComboBox3', 'CKD고객사코드': 'ComboBox4',
                     '정산유형': 'ComboBox5', '업무구분': 'ComboBox6'}
     image_OL = {'search': 'Image4'}
-    screen_sel = {1: 'UI-CL-011', 2: 'UI-CL-103', 3: 'UI-CL-102', 4: 'UI-CL-005', 5: 'UI-CL-032', 6: 'UI-CL-017', 7: 'UI-CL-015', 8: 'UI-MM-003'}
+    screen_sel = {1: 'UI-CL-011', 2: 'UI-CL-103', 3: 'UI-CL-102', 4: 'UI-CL-005', 5: 'UI-CL-032', 6: 'UI-CL-017',
+                  7: 'UI-CL-015', 8: 'UI-MM-003', 9: 'UI-CL-010'}
+    screen_nm = {0: '로그인', 1: '사정결과조회', 2: '보상금액조정', 3: '클레임통보', 4: '분담조건등록', 5: '귀책조건등록',
+                 6: '업체이의처리', 7:'고객사이의처리', 8:'고객차종별부품등록', 9:'사정마감'}
 
 
 class DateConfig:
