@@ -1,6 +1,5 @@
 from ckd_init import AutoCKDInit
 from config import *
-from utils import *
 import pyautogui
 import pyperclip
 
@@ -72,7 +71,7 @@ class E2_Generation(AutoCKDInit):
             pyautogui.hotkey ('ctrl', 'c')
             self.hook = pyperclip.paste ()
             num += 1
-            print('그룹이의제기번호를 검증합니다.', self.hook, self.last_group_no, self.hook != self.last_group_no)
+            print('그룹이의제기번호를 검증합니다.', self.hook)
             if num == 5 :
                 return True
             elif self.hook == '' and self.last_group_no == 0:
@@ -80,7 +79,7 @@ class E2_Generation(AutoCKDInit):
             elif self.hook == '' and self.last_group_no != 0:
                 self.hook, self.last_group_no = 0, 0
         self.last_group_no = self.hook
-        print('그룹이의제기번호를 클릭합니다.', self.hook, self.last_group_no, self.hook == self.last_group_no)
+        print('그룹이의제기번호를 클릭합니다.', self.hook)
         self.window[u'AfxWnd80u'].click_input(coords=(700, 30))
         pyautogui.click (button='left', clicks=2, interval=0.1)
 
@@ -102,7 +101,6 @@ class E2_Generation(AutoCKDInit):
         # self.window_find_n_kill (u'\uc5c5\uccb4\uc774\uc758\ucc98\ub9ac\uacb0\uacfc \ub4f1\ub85d',
         #                          u'\ud655\uc778', class_name=r'#32770')
         self.window[KeyValue.image_E2_2['close']].click()
-
 
     def __del__(self):
         pyautogui.alert(text='프로그램 종료', title='프로세스종료알림', button='OK')
