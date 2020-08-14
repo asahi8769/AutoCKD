@@ -1,8 +1,6 @@
 import calendar
 from datetime import datetime, timedelta, date
 
-import os, sys
-
 
 class KeyValue:
     combo_box_E2 = {'처리결과사유': 'ComboBox1', '이의처리상태': 'ComboBox2', '이의유형': 'ComboBox3',

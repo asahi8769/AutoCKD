@@ -1,5 +1,6 @@
 from ckd_init import AutoCKDInit
 from config import *
+from utils import *
 import pyautogui
 import pyperclip
 

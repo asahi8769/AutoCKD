@@ -3,6 +3,7 @@ from pywinauto.findwindows import find_windows
 import pyautogui
 import time
 from config import *
+from utils import *
 
 
 class AutoCKDInit:
