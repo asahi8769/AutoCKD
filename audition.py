@@ -1,5 +1,5 @@
 from ckd_init import AutoCKDInit
-from config import KeyValue, DateConfig, open_zipfile
+from config import KeyValue, DateConfig
 import pyautogui
 from datetime import datetime
 from dateutil import relativedelta

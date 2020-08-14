@@ -1,31 +1,5 @@
-from subprocess import Popen, PIPE
+from utils import *
 import os
-from os.path import basename
-from config import path_find
-from zipfile import ZipFile
-
-
-def packaging(filename, *bindings):
-    zipname = r'dist\autom.zip'
-    while True:
-        if os.path.exists(os.path.join('dist',filename)):
-            with ZipFile(zipname, 'w') as zipObj:
-                zipObj.write(os.path.join('dist',filename), basename(os.path.join('dist',filename)))
-                for binding in bindings:
-                    for folderName, subfolders, filenames in os.walk(binding):
-                        for filename in filenames:
-                            filePath = os.path.join(folderName, filename)
-                            zipObj.write(filePath, os.path.join(binding, basename(filePath)))
-            print(f'패키징을 완료하였습니다. {zipname}')
-            break
-        else:
-            print('파일이 존재하지 않습니다.')
-
-
-def subprocess_cmd(command):
-    process = Popen(command, stdout=PIPE, shell=True, universal_newlines=True)
-    proc_stdout = process.communicate()[0].strip()
-    print(proc_stdout)
 
 
 if __name__ == "__main__":

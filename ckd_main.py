@@ -4,6 +4,7 @@ from audition import Audition
 from mh_calc import AutoCKDMH
 from online import OnlineReceipt
 
+
 def main():
     ans = input('작업 선택 (1: 로그인, 2: 고객사이의승인, 3: 보상변제사정, 4. 온라인증빙, 5. 맨아워계산(접철식)) :')
     if ans == '1':

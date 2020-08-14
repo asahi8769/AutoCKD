@@ -1,5 +1,6 @@
 from ckd_init import AutoCKDInit
-from config import KeyValue, DateConfig, path_find
+from config import *
+from utils import *
 from datetime import datetime
 from pywinauto import mouse
 import pyautogui

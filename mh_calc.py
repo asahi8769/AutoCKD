@@ -2,7 +2,7 @@ from ckd_init import AutoCKDInit
 from pywinauto.application import Application
 from pywinauto import mouse
 from config import KeyValue
-import sys, os, time
+import sys, time
 import pyperclip
 import pyautogui
 import pickle

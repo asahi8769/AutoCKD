@@ -1,5 +1,5 @@
 from ckd_init import AutoCKDInit
-from config import KeyValue, DateConfig
+from config import *
 import pyautogui
 import pyperclip
 

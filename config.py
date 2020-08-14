@@ -1,7 +1,6 @@
 import calendar
 from datetime import datetime, timedelta, date
-import zipfile
-import shutil
+
 import os, sys
 
 
@@ -85,18 +84,3 @@ class DateConfig:
             return False
 
 
-def open_zipfile(zip_, filename):
-    z = zipfile.ZipFile(zip_, "r")
-    with z.open(filename, 'r') as file:
-        temp_file = os.path.join(os.environ['temp'], filename)
-        temp = open(temp_file, "wb")
-        shutil.copyfileobj(file, temp)
-        temp.close()
-    return temp_file
-
-
-def path_find(name, *paths):
-    for path in paths:
-        for root, dirs, files in os.walk(path):
-            if name in files:
-                return os.path.join(root, name)
