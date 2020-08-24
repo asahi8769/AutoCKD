@@ -7,8 +7,8 @@ class KeyValue:
                  '고객사': 'ComboBox4', '처리결과': 'ComboBox5'}
     edits_E2 = {'Ro_no': 'Edit1', '처리일자_to': 'Edit2', '처리일자_from': 'Edit3', '통보서년월_to': 'Edit4',
              '그룹이의제기번호': 'Edit5', '원인부품번호': 'Edit7', '업체': 'Edit9', '통보서년월_from': 'Edit10'}
-    customer_E2 = {'전체': 0, 'HAOS': 1, 'HMB': 2, 'HMMR': 3, 'KMMG': 4, 'KMS': 5, 'HTBC': 6, 'KMI': 7, 'HMI': 8,
-                'KMM': 9, 'HMMA': 10, 'HMMC': 11, 'KMC': 12}
+    customer_E2 = {'전체': 0, 'HAOS': 1, 'HMB': 2, 'HMMR': 3, 'KMMG': 4, 'KMS': 5, 'DWI': 6,'HTBC': 7, 'KMI': 8,
+                   'HMI': 9, 'KMM': 10, 'HMMA': 11, 'HMMC': 12, 'KMC': 13}
     image_E2 = {'search': 'Image4'}
     combo_box_E2_2 = {'처리결과변경': 'ComboBox2'}
     edits_E2_2 = {'회신내용': 'Edit6', '회신제목': 'Edit7'}
