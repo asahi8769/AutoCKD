@@ -59,23 +59,18 @@ class OnlineReceipt(AutoCKDInit):
         self.wait_until_image_disappears(r'images\searching.png')
         num = 0
         while True :
-            pyperclip.copy('Hook이 초기화되었습니다.')
+            pyperclip.copy('-')
+            self.hook = pyperclip.paste()
             # self.window[u'AfxWnd80u'].click_input(coords=(450, 30))
             pyautogui.click(x=840, y=415)
-            pyautogui.hotkey('ctrl', 'c')
-            print(pyperclip.paste())
-            self.hook = pyperclip.paste()
-            print('다음 Hook을 찾았습니다. :', self.hook)
-            if self.hook != '':
-                num += 1
-                print(f'증빙이 생성된 건입니다. {num}/30')
-                # self.window[u'AfxWnd80u'].click_input(coords=(450, 10))
-                pyautogui.click(x=840, y=395)
-                if num % 3 == 0:
-                    time.sleep(0.2)
-                if num == 30:
-                    return True
-            else:
+
+            n=0
+            while self.hook == pyperclip.paste() and n < 100:
+                pyautogui.hotkey('ctrl', 'c')
+                n +=1
+
+            print('다음 Hook을 찾았습니다. :', pyperclip.paste())
+            if pyperclip.paste() == '-' or pyperclip.paste() == '':
                 self.counter += 1
                 print(f'{self.counter} 번째 증빙을 생성 합니다.')
                 # self.window[u'AfxWnd80u'].click_input(coords=(510, 30))
@@ -83,6 +78,17 @@ class OnlineReceipt(AutoCKDInit):
                 mouse.press(button='left', coords=(865, 415))
                 mouse.release(button='left', coords=(865, 415))
                 break
+            else :
+                num += 1
+                pyperclip.copy('-')
+                print(f'증빙이 생성된 건입니다. {num}/30, {pyperclip.paste()}')
+                # self.window[u'AfxWnd80u'].click_input(coords=(450, 10))
+                pyautogui.click(x=840, y=395)
+                # if num % 3 == 0:
+                #     time.sleep(0.5)
+                if num == 30:
+                    return True
+                continue
 
         self.wait_until_ready(self.app.Dialog.Edit, timeout=0.1)
         while self.app.Dialog.Edit.texts()[0] != self.full_path:
