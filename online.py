@@ -13,17 +13,21 @@ class OnlineReceipt(AutoCKDInit):
         super().__init__()
         self.full_path = None
         self.month = datetime.today().strftime('%Y-%m')
-        self.hook = ''
         self.counter = 0
+        self.paste = ''
+        self.file_name = None
+        self.hook = None
         self.main()
 
     def uploade_file(self):
+        os.startfile('online')
         while True:
-            file_name = pyautogui.prompt(text='업로드하려는 파일명을 입력하세요. \n파일을 바탕화면 또는 현재 폴더에 위치시켜주세요.', title='파일 업로드')
-            self.full_path = path_find(file_name, r'C:\Users\glovis-laptop\Desktop', os.path.join(os.getcwd(), 'online'))
+            self.file_name = pyautogui.prompt(text='업로드하려는 파일명을 입력하세요. \n파일을 바탕화면 또는 현재 폴더에 위치시켜주세요.', title='파일 업로드')
+            self.full_path = path_find(self.file_name, r'C:\Users\glovis-laptop\Desktop', os.path.join(os.getcwd(), 'online'))
             if os.path.exists(self.full_path):
                 print(f'업로드할 파일을 찾았습니다. {self.full_path}')
                 break
+        self.window.set_focus()
 
     def month_setting(self):
         self.wait_until_ready(self.window[KeyValue.edits_OL['거래명세서년월']], timeout=0.1)
@@ -59,37 +63,32 @@ class OnlineReceipt(AutoCKDInit):
         self.wait_until_image_disappears(r'images\searching.png')
         num = 0
         while True :
-            pyperclip.copy('-')
-            self.hook = pyperclip.paste()
-            # self.window[u'AfxWnd80u'].click_input(coords=(450, 30))
+            self.hook =  self.file_name
             pyautogui.click(x=840, y=415)
 
-            n=0
-            while self.hook == pyperclip.paste() and n < 100:
+            num_=0
+            while self.hook == self.file_name and num_ < 10:
                 pyautogui.hotkey('ctrl', 'c')
-                n +=1
+                self.hook = pyperclip.paste()
+                num_ +=1
 
-            print('다음 Hook을 찾았습니다. :', pyperclip.paste())
-            if pyperclip.paste() == '-' or pyperclip.paste() == '':
+            print('다음 Hook을 찾았습니다. :', self.hook == '')
+            pyautogui.hotkey('ctrl', 'c')
+            if pyperclip.paste() == '':
                 self.counter += 1
-                print(f'{self.counter} 번째 증빙을 생성 합니다.')
-                # self.window[u'AfxWnd80u'].click_input(coords=(510, 30))
-                # pyautogui.click(x=865, y=415)
+                print(f'hook : "{self.hook}",  증빙업로드 {self.counter}')
                 mouse.press(button='left', coords=(865, 415))
                 mouse.release(button='left', coords=(865, 415))
                 break
             else :
                 num += 1
-                pyperclip.copy('-')
-                print(f'증빙이 생성된 건입니다. {num}/30, {pyperclip.paste()}')
-                # self.window[u'AfxWnd80u'].click_input(coords=(450, 10))
+                print(f'hook : "{self.hook}", 재시도 {num}/30')
                 pyautogui.click(x=840, y=395)
-                # if num % 3 == 0:
-                #     time.sleep(0.5)
+                pyautogui.click(x=840, y=395)
+                pyautogui.click(x=840, y=395)
                 if num == 30:
                     return True
                 continue
-
         self.wait_until_ready(self.app.Dialog.Edit, timeout=0.1)
         while self.app.Dialog.Edit.texts()[0] != self.full_path:
             self.app.Dialog.Edit.set_text(self.full_path)
