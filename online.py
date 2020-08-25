@@ -73,7 +73,7 @@ class OnlineReceipt(AutoCKDInit):
                 num_ +=1
 
             print('다음 Hook을 찾았습니다. :', self.hook == '')
-            pyautogui.hotkey('ctrl', 'c')
+            pyautogui.hotkey('ctrl', 'c')   # double fool-proof
             if pyperclip.paste() == '':
                 self.counter += 1
                 print(f'hook : "{self.hook}",  증빙업로드 {self.counter}')
