@@ -72,22 +72,26 @@ class OnlineReceipt(AutoCKDInit):
 
     def upload_receipt(self):
         self.wait_until_image_disappears(r'images\searching.png')
-        num = 0
         while True :
             self.hook = self.file_name
+            num = 0
 
             while True:
+                num += 1
                 pyautogui.click(x=840, y=415)
+                # time.sleep(0.1)
                 pyautogui.hotkey('ctrl', 'c')
+                time.sleep(0.12)
                 self.hook = pyperclip.paste()
                 print(self.hook)
                 if self.hook == '':
                     break
+                if num == 5 :
+                    pyautogui.alert(text='프로그램 종료', title='프로세스종료알림', button='OK')
+                    return True
                 pyautogui.click(x=840, y=395)
-                time.sleep(0.5)
 
             print('다음 Hook을 찾았습니다. :', self.hook,  self.hook == '')
-            # pyautogui.hotkey('ctrl', 'c')   # double fool-proof
             if self.hook == '':
                 self.counter += 1
                 print(f'hook : "{self.hook}",  증빙업로드 {self.counter}')
@@ -95,13 +99,6 @@ class OnlineReceipt(AutoCKDInit):
                 mouse.release(button='left', coords=(865, 415))
                 break
             else :
-                num += 1
-                print(f'hook : "{self.hook}", 재시도 {num}/30')
-                pyautogui.click(x=840, y=395)
-                pyautogui.click(x=840, y=395)
-                pyautogui.click(x=840, y=395)
-                if num == 30:
-                    return True
                 continue
         self.wait_until_ready(self.app.Dialog.Edit, timeout=0.1)
         while self.app.Dialog.Edit.texts()[0] != self.full_path:
@@ -122,5 +119,4 @@ class OnlineReceipt(AutoCKDInit):
         while True:
             terminal = self.upload_receipt()
             if terminal:
-                pyautogui.alert(text='프로그램 종료', title='프로세스종료알림', button='OK')
                 break
