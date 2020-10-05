@@ -41,6 +41,7 @@ class Audition(AutoCKDInit):
                         print('8자리 숫자로 입력하세요(YYYYMMDD)')
                         continue
                     else :
+                        self.first_working_day = ans1
                         break
                 except Exception as e:
                     print(f'잘못된 값입니다 ({e})')
