@@ -6,13 +6,23 @@ from pywinauto import mouse
 import pyautogui
 import pyperclip
 import os, time
+from dateutil import relativedelta
 
 
 class OnlineReceipt(AutoCKDInit):
     def __init__(self):
         super().__init__()
         self.full_path = None
-        self.month = datetime.today().strftime('%Y-%m')
+
+        today = datetime.today()
+        lastmonth = datetime.today() + relativedelta.relativedelta(months=-1)
+
+        ans = input(f"사정년월 (1: {today.strftime('%Y%m')}, 2: {lastmonth.strftime('%Y%m')}) (디폴트 : 1) :")
+        if ans == '' or int(ans) != 2:
+            self.month = today.strftime('%Y%m')
+        elif int(ans) == 2:
+            self.month = lastmonth.strftime('%Y%m')
+
         self.counter = 0
         self.paste = ''
         self.file_name = None
