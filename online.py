@@ -40,9 +40,10 @@ class OnlineReceipt(AutoCKDInit):
         self.window.set_focus()
 
     def month_setting(self):
-        self.wait_until_ready(self.window[KeyValue.edits_OL['거래명세서년월']], timeout=0.1)
+        # self.wait_until_ready(self.window[KeyValue.edits_OL['거래명세서년월']], timeout=0.1)
         while True:
-            if self.window[KeyValue.edits_OL['거래명세서년월']].texts()[0] == self.month:
+            # print(self.window[KeyValue.edits_OL['거래명세서년월']].texts()[0], self.month[0:4]+"-"+self.month[-2:])
+            if self.window[KeyValue.edits_OL['거래명세서년월']].texts()[0] == self.month[0:4]+"-"+self.month[-2:]:
                 break
             else :
                 self.window[KeyValue.edits_OL['거래명세서년월']].click()
@@ -73,18 +74,21 @@ class OnlineReceipt(AutoCKDInit):
         self.wait_until_image_disappears(r'images\searching.png')
         num = 0
         while True :
-            self.hook =  self.file_name
-            pyautogui.click(x=840, y=415)
+            self.hook = self.file_name
 
-            num_=0
-            while self.hook == self.file_name and num_ < 10:
+            while True:
+                pyautogui.click(x=840, y=415)
                 pyautogui.hotkey('ctrl', 'c')
                 self.hook = pyperclip.paste()
-                num_ +=1
+                print(self.hook)
+                if self.hook == '':
+                    break
+                pyautogui.click(x=840, y=395)
+                time.sleep(0.5)
 
-            print('다음 Hook을 찾았습니다. :', self.hook == '')
-            pyautogui.hotkey('ctrl', 'c')   # double fool-proof
-            if pyperclip.paste() == '':
+            print('다음 Hook을 찾았습니다. :', self.hook,  self.hook == '')
+            # pyautogui.hotkey('ctrl', 'c')   # double fool-proof
+            if self.hook == '':
                 self.counter += 1
                 print(f'hook : "{self.hook}",  증빙업로드 {self.counter}')
                 mouse.press(button='left', coords=(865, 415))
