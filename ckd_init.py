@@ -73,34 +73,34 @@ class AutoCKDInit:
         self.launch()
         self.current_title = r"[KD SYSTEM] Login"
         self.app_connect()
+
+        while True:
+            try:
+                self.app.Dialog['ComboBox2'].select(0)
+                break
+            except Exception as e:
+                continue
+
         if os.environ.get('CKD_ID') is None or os.environ.get('CKD_PASS') is None:
             id = pyautogui.prompt(text='사번을 입력하세요', title='로그인')
             pw = pyautogui.password(text='비번을 입력하세요', title='로그인')
-            while True:
-                if self.app.Dialog.Edit2.texts()[0] != id:
-                    self.app.Dialog.Edit2.set_text('')
-                    self.app.Dialog.Edit2.set_text(id)
-                else:
-                    break
-            while True:
-                if self.app.Dialog.Edit.texts()[0] != pw:
-                    self.app.Dialog.Edit.set_text('')
-                    self.app.Dialog.Edit.set_text(pw)
-                else:
-                    break
+
+            while self.app.Dialog.Edit2.texts()[0] != id:
+                self.app.Dialog.Edit2.set_text('')
+                self.app.Dialog.Edit2.set_text(id)
+
+            while self.app.Dialog.Edit.texts()[0] != pw:
+                self.app.Dialog.Edit.set_text('')
+                self.app.Dialog.Edit.set_text(pw)
         else:
-            while True:
-                if self.app.Dialog.Edit2.texts()[0] != os.environ.get('CKD_ID'):
-                    self.app.Dialog.Edit2.set_text('')
-                    self.app.Dialog.Edit2.set_text(os.environ.get('CKD_ID'))
-                else:
-                    break
-            while True:
-                if self.app.Dialog.Edit.texts()[0] != os.environ.get('CKD_PASS'):
-                    self.app.Dialog.Edit.set_text('')
-                    self.app.Dialog.Edit.set_text(os.environ.get('CKD_PASS'))
-                else:
-                    break
+            while self.app.Dialog.Edit2.texts()[0] != os.environ.get('CKD_ID'):
+                self.app.Dialog.Edit2.set_text('')
+                self.app.Dialog.Edit2.set_text(os.environ.get('CKD_ID'))
+
+            while self.app.Dialog.Edit.texts()[0] != os.environ.get('CKD_PASS'):
+                self.app.Dialog.Edit.set_text('')
+                self.app.Dialog.Edit.set_text(os.environ.get('CKD_PASS'))
+
         self.app.Dialog.Image.click()
 
     def screen_transition(self, screen_no):
