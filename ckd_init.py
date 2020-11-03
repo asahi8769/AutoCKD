@@ -79,6 +79,7 @@ class AutoCKDInit:
                 self.app.Dialog['ComboBox2'].select(0)
                 break
             except Exception as e:
+                print(e)
                 continue
 
         if os.environ.get('CKD_ID') is None or os.environ.get('CKD_PASS') is None:
